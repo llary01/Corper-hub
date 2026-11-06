@@ -1,0 +1,8 @@
+// Listing details dialog and reviews
+function openL(id){const l=all().find(x=>x.id===id);if(!l)return;const rt=rate(l),R=revs(id),u=me(),d=$('#dlg');
+d.innerHTML=`<div class="dl"><div style="display:flex;justify-content:space-between;gap:10px"><h2>${esc(l.type)} · ${esc(l.area)}</h2><button class="btn o sm" id="cl">Close</button></div><div class="pr">${naira(l.price)} / year · ${esc(l.state)}</div><div class="mut">${l.v?'Verified lister':'Lister not yet verified'}: ${esc(l.owner)} · ★ ${rt.r} · ${rt.n} reviews</div><p>${esc(l.d)}</p><div><button class="btn sm" data-contact="${esc(l.phone)}">Show lister contact</button></div>
+<h3>Reviews</h3>${R.length?R.map(r=>`<div class="rev"><b>${'★'.repeat(r.stars)}</b> ${esc(r.by)}<br>${esc(r.t)}</div>`).join(''):'<p class="mut">No written reviews yet.</p>'}
+${u?`<form class="f" id="rv"><div class="r"><label>Rating<select name="s"><option>5<option>4<option>3<option>2<option>1</select></label></div><label>Your review<textarea name="t" rows="2" required></textarea></label><button class="btn sm">Post review</button></form>`:'<p><a href="#login" id="lg">Log in to write a review</a></p>'}</div>`;
+if(d.open)d.close();d.showModal();$('#cl').onclick=()=>d.close();const lg=$('#lg');if(lg)lg.onclick=()=>d.close();
+const rv=$('#rv');if(rv)rv.onsubmit=e=>{e.preventDefault();const f=new FormData(rv),m=ld('revs',{});m[id]=[...(m[id]||[]),{stars:+f.get('s'),t:f.get('t').trim(),by:u.name}];sv('revs',m);toast('Review posted');openL(id);route.keep=1;const y=scrollY;route();$('#dlg').showModal&&0;scrollTo(0,y)}}
+$('#dlg').addEventListener('click',e=>{if(e.target.id==='dlg')e.target.close()});

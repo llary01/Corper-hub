@@ -1,0 +1,9 @@
+// Page: Roommate matching
+V.roommates=function(){const u=me(),P=ld('rm',[{id:1,name:'Chidi O.',where:'Lagos, Yaba',share:200000,note:'Serving at a bank, tidy, no loud music.',phone:'08030000001'},{id:2,name:'Amina S.',where:'Abuja, Gwarinpa',share:180000,note:'Looking for two female corpers to share a 2-bedroom.',phone:'08030000002'}]);
+return `<div class="pg"><div class="wrap"><h1>Roommate matching</h1><p class="mut">Share rent with other renters. Post what you need or contact someone who fits.</p>
+<div class="panel">${u?`<form class="f" id="rf"><div class="r"><label>State or area<input name="where" required placeholder="Lagos, Yaba"></label><label>Your share of rent per year (₦)<input name="share" type="number" min="1" required></label></div><label>About you<textarea name="note" rows="2" required></textarea></label><button class="btn">Post request</button></form>`:'<a class="btn" href="#login">Log in to post a request</a>'}</div>
+<div class="grid">${P.map(p=>`<article class="card"><div class="cb"><h3>${esc(p.name)}</h3><div class="mut">${esc(p.where)} · up to ${naira(p.share)} / year</div><p>${esc(p.note)}</p><button class="btn sm" data-contact="${esc(p.phone)}">Show contact</button></div></article>`).join('')}</div></div></div>`};
+
+bindings.push(p=>{
+const rf=$('#rf');if(rf)rf.onsubmit=e=>{e.preventDefault();const d=new FormData(rf),u=me();sv('rm',[{id:Date.now(),name:u.name,where:d.get('where').trim(),share:+d.get('share'),note:d.get('note').trim(),phone:u.phone},...(ld('rm',null)||[{id:1,name:'Chidi O.',where:'Lagos, Yaba',share:200000,note:'Serving at a bank, tidy, no loud music.',phone:'08030000001'},{id:2,name:'Amina S.',where:'Abuja, Gwarinpa',share:180000,note:'Looking for two female corpers to share a 2-bedroom.',phone:'08030000002'}])]);toast('Request posted');route()};
+});

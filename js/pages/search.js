@@ -1,0 +1,3 @@
+// Page: Search
+function results(){const q=S.q.trim().toLowerCase();let L=all().filter(l=>(!q||(l.area+' '+l.state).toLowerCase().includes(q))&&(!S.bud||l.price<=+S.bud)&&(!S.type||l.type===S.type));return L}
+V.search=function(){const L=results();return `<div class="pg"><div class="wrap"><h1>Search homes</h1><p class="mut">${L.length} home${L.length==1?'':'s'} found${S.q?` for “${esc(S.q)}”`:''}</p>${searchBar()}<div style="height:24px"></div>${L.length?`<div class="grid">${L.map(card).join('')}</div>`:'<div class="empty">No homes match. Try a higher budget, another area or Room type: Any.</div>'}</div></div>`};
