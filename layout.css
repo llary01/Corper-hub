@@ -1,0 +1,11 @@
+/* Layout: header, nav, footer */
+header.top{background:var(--ink);color:#fff;position:sticky;top:0;z-index:5}
+header .wrap{display:flex;align-items:center;gap:20px;min-height:64px;flex-wrap:wrap}
+.logo{font-size:24px;font-weight:800;color:#fff;text-decoration:none}.logo b{color:var(--gold)}
+nav{display:flex;gap:6px;align-items:center;margin-left:auto;flex-wrap:wrap}
+nav a{color:#dbe9e3;text-decoration:none;padding:8px 12px;border-radius:8px;font-weight:500}
+nav a:hover,nav a.on{background:var(--ink2);color:#fff}
+nav a.cta{background:var(--green);color:#fff}
+#menu{display:none;margin-left:auto;background:none;border:1px solid #3b5a50;color:#fff;border-radius:8px;padding:6px 12px}
+@media(max-width:760px){#menu{display:block}nav{display:none;width:100%;flex-direction:column;align-items:stretch;margin:0 0 12px}nav.open{display:flex}}
+footer{background:var(--ink);color:#9db8ad;padding:28px 0;font-size:14px}

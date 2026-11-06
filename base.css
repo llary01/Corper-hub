@@ -1,0 +1,11 @@
+/* Base: variables, reset, typography */
+:root{--ink:#0f2a23;--ink2:#14382f;--green:#1e8450;--gold:#f0b030;--bg:#f6f8f6;--card:#fff;--tx:#12231d;--mut:#586a63;--line:#d5dfda;--err:#b3261e;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0c1713;--card:#12241d;--tx:#e8f1ed;--mut:#9db3aa;--line:#264238}}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;font:400 16px/1.5 Figtree,system-ui,sans-serif;background:var(--bg);color:var(--tx)}
+h1,h2,h3,.logo{font-family:'Bricolage Grotesque',Figtree,system-ui,sans-serif;line-height:1.15;margin:0}
+a{color:var(--green)}button,input,select,textarea{font:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
